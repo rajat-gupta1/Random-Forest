@@ -1,0 +1,30 @@
+panic: runtime error: index out of range [4] with length 4
+
+goroutine 1 [running]:
+main.main()
+	/home/rajatgupta/course/parallel/project-3-rajat-gupta1/proj3/randomforest/tree.go:457 +0xc53
+exit status 2
+panic: runtime error: index out of range [4] with length 4
+
+goroutine 1 [running]:
+main.main()
+	/home/rajatgupta/course/parallel/project-3-rajat-gupta1/proj3/randomforest/tree.go:457 +0xc53
+exit status 2
+panic: runtime error: index out of range [4] with length 4
+
+goroutine 1 [running]:
+main.main()
+	/home/rajatgupta/course/parallel/project-3-rajat-gupta1/proj3/randomforest/tree.go:457 +0xc53
+exit status 2
+panic: runtime error: index out of range [4] with length 4
+
+goroutine 1 [running]:
+main.main()
+	/home/rajatgupta/course/parallel/project-3-rajat-gupta1/proj3/randomforest/tree.go:457 +0xc53
+exit status 2
+panic: runtime error: index out of range [4] with length 4
+
+goroutine 1 [running]:
+main.main()
+	/home/rajatgupta/course/parallel/project-3-rajat-gupta1/proj3/randomforest/tree.go:457 +0xc53
+exit status 2

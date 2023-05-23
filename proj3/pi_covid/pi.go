@@ -16,6 +16,7 @@ import (
 	"os"
 	"proj3/concurrent"
 	"strconv"
+	"time"
 )
 
 type goContext struct {
@@ -27,7 +28,7 @@ type goContext struct {
 
 func calculateIntervals(intervals, start, end int) float64 {
 	//some code
-	return 0.0
+	return 1.0
 }
 
 type IntervalTask struct {
@@ -50,18 +51,21 @@ func (task *IntervalTask) Call() interface{} {
 	return localSums
 
 }
+
 func main() {
 	//Retrieve the command-line arguments and perform conversion if needed
 	threadCount, _ := strconv.Atoi(os.Args[2])
 	intervals, _ := strconv.Atoi(os.Args[1])
 
-	executor := concurrent.NewWorkStealingExecutor(threadCount, 10)
+	executor := concurrent.NewWorkBalancingExecutor(threadCount, 10, 5)
 	workAmount := intervals / threadCount
 	var total, work, start, end int
 	var futures []concurrent.Future
 	var context goContext
 	context.intervals = intervals
 	var sum float64
+
+	strt := time.Now()
 
 	for i := 0; i < threadCount; i++ {
 		start = total
@@ -73,8 +77,8 @@ func main() {
 		total += work
 		end = total
 		futures = append(futures, executor.Submit(NewIntervalTask(&context, i, start, end)))
-
 	}
+	
 	for _, future := range futures {
 		//Get back the local sums from the futures
 		value := future.Get()
@@ -82,6 +86,9 @@ func main() {
 		sum += localSum
 	}
 	executor.Shutdown()
+
+	endd := time.Since(strt).Seconds()
+	fmt.Printf("%.2f\n", endd)
 
 	//Print out the estimate
 	piEstimate := 4.0 * sum
