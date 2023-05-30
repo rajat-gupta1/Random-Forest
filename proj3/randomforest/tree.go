@@ -363,8 +363,8 @@ func Accuracy (yPred [][]float64, yTest []float64) {
 			acc++
 		}
 	}
-	// fmt.Printf("Accuracy: ")
-	// fmt.Println(float64(acc) / float64(len(yTest)))
+	fmt.Printf("Accuracy: ")
+	fmt.Println(float64(acc) / float64(len(yTest)))
 }
 
 // Function to split the data into train and test
@@ -477,5 +477,5 @@ func main() {
 	Accuracy(yPred, yTest)
 
 	end := time.Since(strt).Seconds()
-	fmt.Printf("%.2f\n", end)
+	fmt.Printf("Time Taken: %.2fs\n", end)
 }
